@@ -33,6 +33,11 @@ func main() {
 		c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 
+	    db, errd = sql.Open("postgres", os.Getenv("DATABASE_URL"))
+    if errd != nil {
+        log.Fatalf("Error opening database: %q", errd)
+    }
+	
 	//-----------------------------------------
 	
 	 router.GET("/test", func(c *gin.Context) {
@@ -47,6 +52,8 @@ func main() {
      lon := c.Query("lon")
      dtime := c.Query("dtime")
 
+	 //https://elekso.herokuapp.com/bump?dtime=10-27-2016 23:27:43&lat=18.6332967&lon=73.8114083&userid=758236590
+	 
      if _, err := db.Exec("CREATE TABLE IF NOT EXISTS pothole(dtime text,lat text,lon text , userid text)"); err != nil {
       c.String(http.StatusInternalServerError,
           fmt.Sprintf("Error creating database table: %q", err))
@@ -73,11 +80,13 @@ func main() {
 	router.POST("/bumppath", func (c *gin.Context) {
    var json Bump_path_struct
    c.Bind(&json)
-//  
-//      if _, err := db.Exec("CREATE TABLE IF NOT EXISTS potpath(dtime text,data text , userid text)"); err != nil {
-//     //c.String(http.StatusInternalServerError, fmt.Sprintf("Error creating database table: %q", err))
-//     //return
-// }
+  
+  //{"userid": "mandar", "datapath": "123", "dtime": "12-04-2016 05:00:00"}
+  
+      if _, err := db.Exec("CREATE TABLE IF NOT EXISTS potpath(dtime text,data text , userid text)"); err != nil {
+     //c.String(http.StatusInternalServerError, fmt.Sprintf("Error creating database table: %q", err))
+     //return
+ }
 //
 //     if _, err :=  db.Exec(  "INSERT INTO potpath (dtime, userid,data) VALUES ('"+json.P_Time+"','"+json.P_User+"','"+json.P_Data+"')"  ); err != nil {
 //     //c.String(http.StatusInternalServerError, fmt.Sprintf("Error ins: %q", err))
