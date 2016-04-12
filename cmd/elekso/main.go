@@ -89,12 +89,12 @@ func main() {
      //c.String(http.StatusInternalServerError, fmt.Sprintf("Error creating database table: %q", err))
      //return
  }
-//
-//     if _, err :=  db.Exec(  "INSERT INTO potpath (dtime, userid,data) VALUES ('"+json.P_Time+"','"+json.P_User+"','"+json.P_Data+"')"  ); err != nil {
-//     //c.String(http.StatusInternalServerError, fmt.Sprintf("Error ins: %q", err))
-//     //return
-// }
-//
+
+     if _, err :=  db.Exec(  "INSERT INTO potpath (dtime, userid,data) VALUES ('"+json.P_Time+"','"+json.P_User+"','"+json.P_Data+"')"  ); err != nil {
+     //c.String(http.StatusInternalServerError, fmt.Sprintf("Error ins: %q", err))
+     //return
+ }
+
     c.String(http.StatusOK, "name: %s; data: %s time: %s",  json.P_User , json.P_Data,json.P_Time)
     // c.JSON(http.StatusOK, gin.H{"status": "register done"})
 	
