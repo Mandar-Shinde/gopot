@@ -82,7 +82,7 @@ func main() {
 
 
    //fmt.Sprintf("name: %s; data: %s time: %s",  json.P_User , json.P_Data,json.P_Time)
-   var buffer bytes.Buffer
+  
     c.String(http.StatusOK, "name: %s; data: %s time: %s",  json.P_User , json.P_Data,json.P_Time)
     // c.JSON(http.StatusOK, gin.H{"status": "you are logged in"})
 	
