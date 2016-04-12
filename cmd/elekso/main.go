@@ -40,26 +40,26 @@ func main() {
 
 	//-----------------------------------------
 	
-	   router.GET("/bump", func(c *gin.Context) {
-       usr := c.Query("userid")
-       lat := c.Query("lat")
-       lon := c.Query("lon")
-       dtime := c.Query("dtime")
-
-       if _, err := db.Exec("CREATE TABLE IF NOT EXISTS pothole(dtime text,lat text,lon text , userid text)"); err != nil {
-        c.String(http.StatusInternalServerError,
-            fmt.Sprintf("Error creating database table: %q", err))
-        return
-    }
-
-        if _, err :=  db.Exec(  "INSERT INTO pothole (dtime, userid,lat,lon) VALUES ('"+dtime+"','"+usr+"','"+lat+"','"+lon+"')"  ); err != nil {
-        c.String(http.StatusInternalServerError,
-            fmt.Sprintf("Error ins: %q", err))
-        return
-    }
-
-        c.String(http.StatusOK, "INS %s  %s %s+%s", usr,dtime,lat,lon)
-    })
+//   router.GET("/bump", func(c *gin.Context) {
+//     usr := c.Query("userid")
+//     lat := c.Query("lat")
+//     lon := c.Query("lon")
+//     dtime := c.Query("dtime")
+//
+//     if _, err := db.Exec("CREATE TABLE IF NOT EXISTS pothole(dtime text,lat text,lon text , userid text)"); err != nil {
+//      c.String(http.StatusInternalServerError,
+//          fmt.Sprintf("Error creating database table: %q", err))
+//      return
+//  }
+//
+//      if _, err :=  db.Exec(  "INSERT INTO pothole (dtime, userid,lat,lon) VALUES ('"+dtime+"','"+usr+"','"+lat+"','"+lon+"')"  ); err != nil {
+//      c.String(http.StatusInternalServerError,
+//          fmt.Sprintf("Error ins: %q", err))
+//      return
+//  }
+//
+//      c.String(http.StatusOK, "INS %s  %s %s+%s", usr,dtime,lat,lon)
+//  })
 	
 	
 	//-----------------------------------------
