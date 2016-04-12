@@ -35,7 +35,7 @@ func main() {
 	//-----------------------------------------
 	
 	 router.GET("/test", func(c *gin.Context) {
-        c.String(http.StatusOK, string("google mandar ... shinde "))
+        c.String(http.StatusOK, string("google mandar shinde github"))
     })
 
 	//-----------------------------------------
