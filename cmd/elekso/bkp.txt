@@ -1,40 +1,31 @@
 package main
 
 import (
-    "bytes"
-    "fmt"
-    "log"
-    "net/http"
-    "os"
-    "strconv"
-    "time"
-    "database/sql"
+	"log"
+	"net/http"
+	"os"
 
-    "github.com/gin-gonic/gin"
-
-    _ "github.com/lib/pq"
+	"github.com/gin-gonic/gin"
 )
 
-var (
-    repeat int
-    db     *sql.DB = nil
-)
+func main() {
+	port := os.Getenv("PORT")
 
-func repeatFunc(c *gin.Context) {
-    var buffer bytes.Buffer
-    for i := 0; i < repeat; i++ {
-        buffer.WriteString("Hello from Go!")
-    }
-    c.String(http.StatusOK, buffer.String())
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
+	router := gin.New()
+	router.Use(gin.Logger())
+	router.LoadHTMLGlob("templates/*.tmpl.html")
+	router.Static("/static", "static")
+
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.tmpl.html", nil)
+	})
+
+	router.Run(":" + port)
 }
-
-
-func paramchk(c *gin.Context) {
-
-
-}
-
-
 
 
 func dbFunc(c *gin.Context) {
