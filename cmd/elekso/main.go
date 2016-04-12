@@ -18,6 +18,8 @@ var (
 )
 
 func main() {
+    var err error
+    var errd error
 	port := os.Getenv("PORT")
 
 	if port == "" {
