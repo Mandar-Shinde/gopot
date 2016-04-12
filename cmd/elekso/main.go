@@ -68,7 +68,7 @@ func main() {
     P_Time string `json:"dtime" binding:"required"`
 	}
 
-	router.POST("/bumppath", func (c *gin.Context) {
+	router.POST("/bumppath", func (c *gin.Context)) {
    var json Bump_path_struct
    c.Bind(&json)
 
