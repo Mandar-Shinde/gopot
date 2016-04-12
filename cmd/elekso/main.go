@@ -4,8 +4,15 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"database/sql"
 
+	
 	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
+)
+var (
+    repeat int
+    db     *sql.DB = nil
 )
 
 func main() {
@@ -24,5 +31,33 @@ func main() {
 		c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 
+	//-----------------------------------------
+	
+	 router.GET("/test", func(c *gin.Context) {
+        c.String(http.StatusOK, string("google mandar ... shinde "))
+    })
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	router.Run(":" + port)
 }
