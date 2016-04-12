@@ -75,15 +75,13 @@ func main() {
    c.Bind(&json)
    
        if _, err := db.Exec("CREATE TABLE IF NOT EXISTS potpath(dtime text,data text , userid text)"); err != nil {
-      c.String(http.StatusInternalServerError,
-          fmt.Sprintf("Error creating database table: %q", err))
-      return
+      //c.String(http.StatusInternalServerError, fmt.Sprintf("Error creating database table: %q", err))
+      //return
   }
 
       if _, err :=  db.Exec(  "INSERT INTO potpath (dtime, userid,data) VALUES ('"+json.P_Time+"','"+json.P_User+"','"+json.P_Data+"')"  ); err != nil {
-      c.String(http.StatusInternalServerError,
-          fmt.Sprintf("Error ins: %q", err))
-      return
+      //c.String(http.StatusInternalServerError, fmt.Sprintf("Error ins: %q", err))
+      //return
   }
 
     c.String(http.StatusOK, "name: %s; data: %s time: %s",  json.P_User , json.P_Data,json.P_Time)
