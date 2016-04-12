@@ -68,7 +68,7 @@ func main() {
     P_Time string `json:"dtime" binding:"required"`
 	}
 
-	router.POST("/bumppath", func (c *gin.Context)) {
+	router.POST("/bumppath", func (c *gin.Context) {
    var json Bump_path_struct
    c.Bind(&json)
 
@@ -81,7 +81,7 @@ func main() {
 
    fmt.Sprintf("name: %s; data: %s time: %s",  json.P_User , json.P_Data,json.P_Time)
      c.JSON(http.StatusOK, gin.H{"status": "you are logged in"})
- }
+ })
 	
 	
 	
