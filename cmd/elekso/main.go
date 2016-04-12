@@ -2,7 +2,7 @@ package main
 //http://coderbox.herokuapp.com/
 
 import (
-	"bytes"
+
 	"log"
 	"net/http"
 	"os"
