@@ -69,7 +69,7 @@ func main() {
 	
 	//-----------------------------------------
 	
-	router.GET("/bump", func(c *gin.Context) {
+	router.GET("/pothole", func(c *gin.Context) {
 	usr: = c.Query("userid")
 	lat : = c.Query("lat")
 	lon : = c.Query("lon")
@@ -100,7 +100,7 @@ func main() {
 	P_Time string `json:"dtime" binding:"required"`
 	}
 	
-	router.POST("/bumppath", func(c *gin.Context) {
+	router.POST("/potholetrail", func(c *gin.Context) {
 	var json Bump_path_struct
 	c.Bind(&json)
 	
