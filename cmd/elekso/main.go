@@ -46,6 +46,27 @@ func main() {
         c.String(http.StatusOK, string("google mandar shinde github"))
     })
 
+	
+	//-----------------------------------------
+	
+   router.GET("/init", func(c *gin.Context) {
+
+     if _, err := db.Exec("CREATE TABLE IF NOT EXISTS pothole(dtime text,lat text,lon text , userid text)"); err != nil {
+      c.String(http.StatusInternalServerError,
+          fmt.Sprintf("Error creating database table: %q", err))
+      return
+  }
+
+        if _, err := db.Exec("CREATE TABLE IF NOT EXISTS potpath(dtime text,data text , userid text)"); err != nil {
+     c.String(http.StatusInternalServerError, fmt.Sprintf("Error creating database table: %q", err))
+     return
+ }
+
+  })
+	
+	
+
+	
 	//-----------------------------------------
 	
    router.GET("/bump", func(c *gin.Context) {
